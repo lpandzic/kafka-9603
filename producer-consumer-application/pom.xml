@@ -121,7 +121,7 @@
 				<version>${jib-maven-plugin.version}</version>
 				<configuration>
 					<from>
-						<image>docker://${project.groupId}-openjdk-11:1.0.0-SNAPSHOT</image>
+						<image>docker://${project.groupId}-openjdk-11:${project.version}</image>
 					</from>
 					<to>
 						<image>${project.artifactId}:${project.version}</image>
