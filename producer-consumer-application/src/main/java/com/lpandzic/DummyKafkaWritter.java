@@ -20,7 +20,7 @@ public class DummyKafkaWritter {
     private final AtomicLong keyCounter = new AtomicLong(0L);
     private final Clock clock;
 
-    @Scheduled(fixedRate = 20)
+    @Scheduled(fixedRate = 40)
     public void send() throws JsonProcessingException {
         var key = Long.toString(keyCounter.incrementAndGet());
         var foo = new Foo("foo " + key, clock.instant());

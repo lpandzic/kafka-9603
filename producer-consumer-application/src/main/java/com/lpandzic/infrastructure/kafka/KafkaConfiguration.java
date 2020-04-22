@@ -2,6 +2,8 @@ package com.lpandzic.infrastructure.kafka;
 
 import lombok.AllArgsConstructor;
 import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.admin.AdminClientConfig;
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serdes;
@@ -12,6 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.annotation.KafkaStreamsDefaultConfiguration;
 import org.springframework.kafka.config.KafkaStreamsConfiguration;
+import org.springframework.kafka.core.KafkaAdmin;
+import org.springframework.util.StringUtils;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -61,5 +65,22 @@ public class KafkaConfiguration {
                    CustomDeserializationExceptionHandler.class);
 
         return new KafkaStreamsConfiguration(config);
+    }
+
+    @Bean
+    public KafkaAdmin admin(KafkaProperties kafkaProperties) {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapServers());
+        return new KafkaAdmin(configs);
+    }
+
+    @Bean
+    public NewTopic fooTopic() {
+        return new NewTopic("foo", 48, (short) 6);
+    }
+
+    @Bean
+    public NewTopic barTopic() {
+        return new NewTopic("bar", 48, (short) 6);
     }
 }
