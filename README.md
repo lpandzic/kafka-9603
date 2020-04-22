@@ -19,4 +19,4 @@ Steps to reproduce:
 
 On master branch - after ~ 5-10 minutes open files count should steadily increase every minute.
 
-On branch 2.1.x open files count is stable.
+On branch spring-boot-2.1.5 open files count is stable.
