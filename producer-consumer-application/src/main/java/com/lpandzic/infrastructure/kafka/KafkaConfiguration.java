@@ -17,6 +17,7 @@ import org.springframework.kafka.config.KafkaStreamsConfiguration;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,22 +66,5 @@ public class KafkaConfiguration {
                    CustomDeserializationExceptionHandler.class);
 
         return new KafkaStreamsConfiguration(config);
-    }
-
-    @Bean
-    public KafkaAdmin admin(KafkaProperties kafkaProperties) {
-        Map<String, Object> configs = new HashMap<>();
-        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapServers());
-        return new KafkaAdmin(configs);
-    }
-
-    @Bean
-    public NewTopic fooTopic() {
-        return new NewTopic("foo", 48, (short) 6);
-    }
-
-    @Bean
-    public NewTopic barTopic() {
-        return new NewTopic("bar", 48, (short) 6);
     }
 }
