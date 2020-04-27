@@ -17,9 +17,4 @@ public class FooBarRocksDBConfigSetter implements RocksDBConfigSetter {
         options.setKeepLogFileNum(1);
         options.setMaxLogFileSize(1024 * 1024L);
     }
-
-    @Override
-    public void close(String storeName, Options options) {
-
-    }
 }

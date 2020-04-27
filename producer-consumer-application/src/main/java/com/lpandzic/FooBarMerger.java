@@ -35,7 +35,7 @@ public class FooBarMerger {
                                   Consumed.with(stringSerde, barSerde, barTimestampExtractor(), null));
 
         var joinWindows = JoinWindows.of(Duration.of(1, MINUTES))
-                                                .grace(Duration.of(7, DAYS));
+                                     .grace(Duration.of(7, DAYS));
 
         foos.join(bars, this::join, joinWindows,
                   Joined.with(stringSerde, fooSerde, barSerde))

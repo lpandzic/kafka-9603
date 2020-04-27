@@ -7,8 +7,8 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['localhost:9090']
-  - job_name: 'producer-consumer-application'
+  - job_name: 'producer-consumer-application_1'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['producer-consumer-application:8080']
+      - targets: ['producer-consumer-application_1:8080', 'producer-consumer-application_2:8081']
