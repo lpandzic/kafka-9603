@@ -34,8 +34,8 @@ public class FooBarMerger {
         var bars = builder.stream(BAR_TOPIC_NAME,
                                   Consumed.with(stringSerde, barSerde, barTimestampExtractor(), null));
 
-        var joinWindows = JoinWindows.of(Duration.of(1, MINUTES))
-                                     .grace(Duration.of(7, DAYS));
+        var joinWindows = JoinWindows.of(Duration.of(1, MINUTES).toMillis())
+                                     .until(Duration.of(7, DAYS).toMillis());
 
         foos.join(bars, this::join, joinWindows,
                   Joined.with(stringSerde, fooSerde, barSerde))
