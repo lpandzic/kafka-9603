@@ -9,7 +9,7 @@ import java.time.Duration;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Thread.sleep(Duration.ofSeconds(10).toMillis()); // waiting for topics
+        Thread.sleep(Duration.ofSeconds(20).toMillis()); // waiting for topics
         new SpringApplicationBuilder(Main.class).run(args);
     }
 }
